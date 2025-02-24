@@ -1,7 +1,7 @@
 ---
 creation_rules:
 - encrypted_regex: '^(data|stringData)$'
-  age: age1zzqxk3z5anq53lz9g4rd7eatczfcd7vjszgggr47927mwe7hjfhq3tlad6
+  age: age1ft4dldx5zezaajkju2gsaugvtqqhvughw3hw29ekl7qvdcukfq3spcfntq
 stores:
   yaml:
     indent: 2

@@ -3,50 +3,50 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../namespaces.yaml
-- ../arrs.yaml
-- ../authelia.yaml
+# - ../arrs.yaml
+# - ../authelia.yaml
 # - ../bind9.yaml
 # - ../blocky.yaml
 - ../certificate-exporter.yaml
 - ../cert-manager.yaml
 # - ../cloudflared.yaml
-- ../csi-driver-smb.yaml
+# - ../csi-driver-smb.yaml
 - ../descheduler.yaml
 # - ../external-dns-bind.yaml
 - ../external-dns-cloudflare.yaml
 - ../flux-system.yaml
-- ../goldilocks.yaml
-- ../homer.yaml
-- ../immich.yaml
+# - ../goldilocks.yaml
+# - ../homer.yaml
+# - ../immich.yaml
 - ../ingress-nginx.yaml
-- ../ingress-nginx-external.yaml
-- ../jd2.yaml
-- ../jellyfin.yaml
-- ../jellyseerr.yaml
+# - ../ingress-nginx-external.yaml
+# - ../jd2.yaml
+# - ../jellyfin.yaml
+# - ../jellyseerr.yaml
 - ../kube-prometheus-stack.yaml
 - ../kube-vip.yaml
-- ../kured.yaml
-- ../linkwarden.yaml
-- ../loki.yaml
-- ../longhorn.yaml
-- ../memos.yaml
+# - ../kured.yaml
+# - ../linkwarden.yaml
+# - ../loki.yaml
+# - ../longhorn.yaml
+# - ../memos.yaml
 - ../metallb.yaml
 - ../metrics-server.yaml
-- ../minio.yaml
-- ../paperless-ngx.yaml
-- ../pod-gateway-vpn.yaml
-- ../promtail.yaml
-- ../qbittorrent.yaml
-- ../radicale.yaml
+# - ../minio.yaml
+# - ../paperless-ngx.yaml
+# - ../pod-gateway-vpn.yaml
+# - ../promtail.yaml
+# - ../qbittorrent.yaml
+#- ../radicale.yaml
 - ../rancher.yaml
 - ../reloader.yaml
 # - ../restic.yaml
-- ../sftpgo.yaml
-- ../syncthing.yaml
+# - ../sftpgo.yaml
+# - ../syncthing.yaml
 # - ../system-upgrade-controller.yaml
-- ../tandoor-recipes.yaml
-- ../weave-gitops.yaml
+# - ../tandoor-recipes.yaml
+# - ../weave-gitops.yaml
 
 patchesStrategicMerge:
-- longhorn.yaml
+#- longhorn.yaml
 - ingress-nginx.yaml

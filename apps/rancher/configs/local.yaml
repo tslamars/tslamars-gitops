@@ -8,4 +8,4 @@ metadata:
   annotations:
     management.cattle.io/auth-provider-cleanup: unlocked
 type: localConfig
-enabled: false
+enabled: true
