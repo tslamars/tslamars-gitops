@@ -10,7 +10,7 @@ resources:
 - ../certificate-exporter.yaml
 - ../cert-manager.yaml
 # - ../cloudflared.yaml
-# - ../csi-driver-smb.yaml
+- ../csi-driver-smb.yaml
 - ../descheduler.yaml
 # - ../external-dns-bind.yaml
 - ../external-dns-cloudflare.yaml
@@ -22,7 +22,7 @@ resources:
 # - ../ingress-nginx-external.yaml
 # - ../jd2.yaml
 # - ../jellyfin.yaml
-# - ../jellyseerr.yaml
+- ../jellyseerr.yaml
 # - ../kube-prometheus-stack.yaml
 - ../kube-vip.yaml
 # - ../kured.yaml

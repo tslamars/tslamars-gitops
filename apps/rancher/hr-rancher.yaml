@@ -35,3 +35,6 @@ spec:
         source: secret
         secretName: rancher-tls
     bootstrapPassword: "${SECRET_RANCHER_ADMIN_PASSWORD}"
+    extraEnv:
+      - name: CATTLE_PASSWORD_MIN_LENGTH
+        value: "12"  # Ensures the bootstrap password is at least 12 characters, prompting stronger passwords on reset
