@@ -31,8 +31,8 @@ spec:
         kubernetes.io/tls-acme: "true"
         nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
         nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
-        nginx.ingress.kubernetes.io/backend-protocol: HTTPS # Tell nginx to use HTTPS to backend
-      servicePort: 443
+        #nginx.ingress.kubernetes.io/backend-protocol: HTTPS # Tell nginx to use HTTPS to backend
+      #servicePort: 443
       tls:
         source: secret
         secretName: rancher-tls
