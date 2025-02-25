@@ -15,7 +15,7 @@ resources:
 # - ../external-dns-bind.yaml
 - ../external-dns-cloudflare.yaml
 - ../flux-system.yaml
-# - ../goldilocks.yaml
+- ../goldilocks.yaml
 # - ../homer.yaml
 # - ../immich.yaml
 - ../ingress-nginx.yaml
@@ -23,7 +23,7 @@ resources:
 # - ../jd2.yaml
 - ../jellyfin.yaml
 - ../jellyseerr.yaml
-# - ../kube-prometheus-stack.yaml
+- ../kube-prometheus-stack.yaml
 - ../kube-vip.yaml
 # - ../kured.yaml
 # - ../linkwarden.yaml
@@ -37,7 +37,7 @@ resources:
 # - ../pod-gateway-vpn.yaml
 # - ../promtail.yaml
 # - ../qbittorrent.yaml
-#- ../radicale.yaml
+# - ../radicale.yaml
 - ../rancher.yaml
 - ../reloader.yaml
 # - ../restic.yaml
@@ -49,5 +49,5 @@ resources:
 # - ../weave-gitops.yaml
 
 patchesStrategicMerge:
-#- longhorn.yaml
+- longhorn.yaml
 - ingress-nginx.yaml

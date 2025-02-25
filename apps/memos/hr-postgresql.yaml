@@ -67,6 +67,6 @@ spec:
       #     rm -rf /bitnami/postgresql/data
       #     mv /var/lib/postgresql/$PG_NEW/data /bitnami/postgresql/
     metrics:
-      enabled: false
+      enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true

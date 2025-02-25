@@ -46,18 +46,20 @@ spec:
       ingress:
         enabled: true
         pathType: Prefix
-        ingressClassName: "nginx-external"
+        #ingressClassName: "nginx-external"
+        ingressClassName: "nginx"
         annotations:
-          external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
+          #external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
           kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
+          #nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
+          #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
         hosts:
         - "alert-manager.${SECRET_DOMAIN}"
         tls:
         - secretName: alertmanager-tls
           hosts:
-          - "alert-manager.${SECRET_DOMAIN}"
+          - "*.${SECRET_DOMAIN}"
+          #- "alert-manager.${SECRET_DOMAIN}"
       config:
         global:
           slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
@@ -104,14 +106,14 @@ spec:
         server:
           root_url: https://grafana.${SECRET_DOMAIN}
         auth:
-          disable_login_form: true
-          oauth_auto_login: true
+          disable_login_form: false
+          oauth_auto_login: false
         # auth.anonymous:
         #   enabled: false
         # auth.basic:
         #   enabled: false
         auth.generic_oauth:
-          enabled: true
+          enabled: false
           name: Authelia
           icon: signin
           client_id: wCDESryfxgaEQUrgISZWrcNgNQCCUL3u1PZulzpSTaRvkQTpN4CQvrWx6RTa69flzhonmC5p
@@ -186,18 +188,20 @@ spec:
       ingress:
         enabled: true
         pathType: Prefix
-        ingressClassName: "nginx-external"
+        #ingressClassName: "nginx-external"
+        ingressClassName: "nginx"
         annotations:
-          external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
+          #external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
           kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
+          #nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
+          #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
         hosts:
         - "grafana.${SECRET_DOMAIN}"
         tls:
         - secretName: grafana-tls
           hosts:
-          - "grafana.${SECRET_DOMAIN}"
+          - "*.${SECRET_DOMAIN}"
+          #- "grafana.${SECRET_DOMAIN}"
     prometheus:
       image:
         registry: quay.io
@@ -206,18 +210,20 @@ spec:
       ingress:
         enabled: true
         pathType: Prefix
-        ingressClassName: "nginx-external"
+        #ingressClassName: "nginx-external"
+        ingressClassName: "nginx"
         annotations:
-          external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
+          #external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
           kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
+          #nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
+          #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
         hosts:
         - "prometheus.${SECRET_DOMAIN}"
         tls:
         - secretName: prometheus-tls
           hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - "*.${SECRET_DOMAIN}"
+          #- "prometheus.${SECRET_DOMAIN}"
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false

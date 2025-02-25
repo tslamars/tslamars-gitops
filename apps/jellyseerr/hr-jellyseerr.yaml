@@ -51,7 +51,8 @@ spec:
         tls:
         - secretName: jellyseerr-tls
           hosts:
-          - jellyseerr.${SECRET_DOMAIN}
+          - "*.${SECRET_DOMAIN}"
+          #- jellyseerr.${SECRET_DOMAIN}
     persistence:
       config:
         existingClaim: jellyseerr-config
