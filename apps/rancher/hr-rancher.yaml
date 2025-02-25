@@ -20,7 +20,7 @@ spec:
     - name: ingress-nginx
       namespace: networking
   values:
-    replicas: 2
+    replicas: 3
     hostname: rancher.${SECRET_DOMAIN}
     tls: ingress
     ingress:
