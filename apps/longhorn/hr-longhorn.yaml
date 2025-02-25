@@ -32,12 +32,13 @@ spec:
       dataEngine: v1
     ingress:
       enabled: true
-      ingressClassName: nginx-external
+      #ingressClassName: nginx-external
+      ingressClassName: nginx
       annotations:
-        external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
+        #external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
         kubernetes.io/tls-acme: "true"
-        nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
-        nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
+        #nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
+        #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
       host: longhorn.${SECRET_DOMAIN}
       tls: true
       tlsSecret: longhorn-tls
@@ -62,6 +63,6 @@ spec:
       freezeFilesystemForSnapshot: true
       autoCleanupSnapshotWhenDeleteBackup: true
       rwxVolumeFastFailover: true
-    defaultBackupStore:
-      backupTarget: s3://longhorn@us-east-1/
-      backupTargetCredentialSecret: longhorn-system-secrets
+    #defaultBackupStore:
+    #  backupTarget: s3://longhorn@us-east-1/
+    #  backupTargetCredentialSecret: longhorn-system-secrets

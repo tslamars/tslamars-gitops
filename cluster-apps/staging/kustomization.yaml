@@ -28,7 +28,7 @@ resources:
 # - ../kured.yaml
 # - ../linkwarden.yaml
 # - ../loki.yaml
-# - ../longhorn.yaml
+- ../longhorn.yaml
 # - ../memos.yaml
 - ../metallb.yaml
 - ../metrics-server.yaml
