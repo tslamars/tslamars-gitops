@@ -21,8 +21,8 @@ spec:
       namespace: kube-system
     - name: longhorn
       namespace: longhorn-system
-    - name: pod-gateway-vpn
-      namespace: networking
+    #- name: pod-gateway-vpn
+    #  namespace: networking
   values:
     controllers:
       radarr:
