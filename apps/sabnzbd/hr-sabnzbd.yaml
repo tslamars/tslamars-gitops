@@ -3,13 +3,13 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: sabnzbd
-  namespace: default  # Adjust to your namespace if different
+  namespace: default  # Adjust if different
 spec:
   interval: 5m
   chart:
     spec:
       chart: app-template
-      version: 3.7.1  # Matches your error log
+      version: 3.7.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
@@ -38,13 +38,6 @@ spec:
                 value: "1000"
               - name: TZ
                 value: "Etc/UTC"
-              # Optional API key; uncomment and adjust if you have a secret
-              RADARR__AUTH__APIKEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: arrs-secrets
-                    key: SABNZBD_API_KEY
-
     service:
       sabnzbd:
         controller: sabnzbd
@@ -69,13 +62,15 @@ spec:
           - "*.${SECRET_DOMAIN}"
     persistence:
       config:
-        type: persistentVolumeClaim  # Full name instead of "pvc"
-        existingClaim: sabnzbd-data  # Your Longhorn PVC
+        enabled: true
+        type: pvc
+        existingClaim: sabnzbd-data
         globalMounts:
           - path: "/config"
       downloads:
-        type: persistentVolumeClaim  # Full name instead of "pvc"
-        existingClaim: arrs-downloads  # Your SMB PVC
+        enabled: true
+        type: pvc
+        existingClaim: arrs-downloads
         globalMounts:
           - path: "/downloads"
-            subPath: ""  # Root of the PVC
+            subPath: ""
