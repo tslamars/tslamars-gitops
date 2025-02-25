@@ -8,7 +8,7 @@ resources:
 # - ../bind9.yaml
 # - ../blocky.yaml
 - ../certificate-exporter.yaml
-- ../cert-manager.yaml
+# - ../cert-manager.yaml
 # - ../cloudflared.yaml
 # - ../csi-driver-smb.yaml
 - ../descheduler.yaml
