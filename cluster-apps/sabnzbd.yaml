@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./apps/sabnzbd
-  targetNamespace: selfhosted
+  targetNamespace: vpn
   interval: 10m
   prune: true
   sourceRef:
