@@ -15,8 +15,8 @@ spec:
         namespace: flux-system
       interval: 5m
   dependsOn:
-    - name: kube-prometheus-stack
-      namespace: monitoring
+    #- name: kube-prometheus-stack
+    #  namespace: monitoring
     - name: longhorn
       namespace: longhorn-system
   values:
