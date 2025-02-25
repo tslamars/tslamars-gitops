@@ -41,6 +41,7 @@ resources:
 - ../rancher.yaml
 - ../reloader.yaml
 # - ../restic.yaml
+- ../sabnzbd.yaml
 # - ../sftpgo.yaml
 # - ../syncthing.yaml
 # - ../system-upgrade-controller.yaml
