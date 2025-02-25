@@ -35,8 +35,8 @@ spec:
               PUID: "1000"
               PGID: "1000"
               TZ: Etc/UTC
-              RADARR__AUTH__METHOD: External
-              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              #RADARR__AUTH__METHOD: External
+              #RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
               RADARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
@@ -52,8 +52,8 @@ spec:
               PUID: "1000"
               PGID: "1000"
               TZ: Etc/UTC
-              SONARR__AUTH__METHOD: External
-              SONARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              #SONARR__AUTH__METHOD: External
+              #SONARR__AUTH__REQUIRED: DisabledForLocalAddresses
               SONARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
@@ -69,8 +69,8 @@ spec:
               PUID: "1000"
               PGID: "1000"
               TZ: Etc/UTC
-              BAZARR__AUTH__METHOD: External
-              BAZARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              #BAZARR__AUTH__METHOD: External
+              #BAZARR__AUTH__REQUIRED: DisabledForLocalAddresses
               BAZARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
@@ -86,8 +86,8 @@ spec:
               PUID: "1000"
               PGID: "1000"
               TZ: Etc/UTC
-              PROWLARR__AUTH__METHOD: External
-              PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              #PROWLARR__AUTH__METHOD: External
+              #PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
       flaresolverr:
         containers:
           app:
@@ -125,8 +125,8 @@ spec:
         className: "nginx"
         annotations:
           kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
+          #nginx.ingress.kubernetes.io/auth-url: http://authelia.networking.svc.cluster.local/api/authz/auth-request
+          #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}
         hosts:
         - host: radarr.${SECRET_DOMAIN}
           paths:
