@@ -62,15 +62,10 @@ spec:
           - "*.${SECRET_DOMAIN}"
     persistence:
       config:
-        enabled: true
-        type: pvc
         existingClaim: sabnzbd-data
         globalMounts:
           - path: "/config"
       downloads:
-        enabled: true
-        type: pvc
         existingClaim: arrs-downloads
         globalMounts:
           - path: "/downloads"
-            subPath: ""
