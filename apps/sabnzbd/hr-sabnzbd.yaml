@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.1  # Match your existing version
+      version: 3.7.1  # Matches your error log
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
@@ -25,28 +25,32 @@ spec:
   values:
     controllers:
       sabnzbd:
-        replicas: 1  # Single replica by default; adjust as needed
+        replicas: 1
         containers:
           app:
             image:
               repository: ghcr.io/linuxserver/sabnzbd
               tag: latest
             env:
-              PUID: "1000"
-              PGID: "1000"
-              TZ: Etc/UTC
-              SABNZBD__APIKEY:
+              - name: PUID
+                value: "1000"
+              - name: PGID
+                value: "1000"
+              - name: TZ
+                value: "Etc/UTC"
+              # Optional API key; uncomment and adjust if you have a secret
+              RADARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
-                    name: sabnzbd-secrets
+                    name: arrs-secrets
                     key: SABNZBD_API_KEY
-                    optional: true
+
     service:
       sabnzbd:
         controller: sabnzbd
         ports:
           http:
-            port: 8080  # SABnzbd default port
+            port: 8080
     ingress:
       main:
         className: "nginx"
@@ -65,13 +69,13 @@ spec:
           - "*.${SECRET_DOMAIN}"
     persistence:
       config:
-        type: pvc
-        existingClaim: sabnzbd-data  # Your new Longhorn-backed PVC
+        type: persistentVolumeClaim  # Full name instead of "pvc"
+        existingClaim: sabnzbd-data  # Your Longhorn PVC
         globalMounts:
           - path: "/config"
       downloads:
-        type: pvc
-        existingClaim: arrs-downloads  # SMB share for downloads
+        type: persistentVolumeClaim  # Full name instead of "pvc"
+        existingClaim: arrs-downloads  # Your SMB PVC
         globalMounts:
           - path: "/downloads"
             subPath: ""  # Root of the PVC
