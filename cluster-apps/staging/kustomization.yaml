@@ -24,13 +24,13 @@ resources:
 - ../jellyfin.yaml
 - ../jellyseerr.yaml
 - ../kube-prometheus-stack.yaml
-- ../kube-vip.yaml
+# - ../kube-vip.yaml
 # - ../kured.yaml
 # - ../linkwarden.yaml
 # - ../loki.yaml
 - ../longhorn.yaml
 - ../memos.yaml
-- ../metallb.yaml
+# - ../metallb.yaml
 - ../metrics-server.yaml
 # - ../minio.yaml
 # - ../paperless-ngx.yaml

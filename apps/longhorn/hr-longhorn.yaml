@@ -43,6 +43,7 @@ spec:
       tls: true
       tlsSecret: longhorn-tls
     defaultSettings:
+      defaultDataPath: "/var/mnt/longhorn"
       storageOverProvisioningPercentage: 100
       storageMinimalAvailablePercentage: 10
       defaultLonghornStaticStorageClass: longhorn-backup
@@ -63,6 +64,23 @@ spec:
       freezeFilesystemForSnapshot: true
       autoCleanupSnapshotWhenDeleteBackup: true
       rwxVolumeFastFailover: true
+    tolerations:  # Added from Helm command
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+    nodeSelector:  # Added from Helm command
+      node-role.kubernetes.io/worker: ""
+    podSecurityPolicy:  # Added from Helm command
+      enabled: false
+    global:
+      securityContext:  # Added from Helm command
+        runAsNonRoot: false
+        allowPrivilegeEscalation: true
+        capabilities:
+          drop: []
+        privileged: true
+        seccompProfile:
+          type: ""
     #defaultBackupStore:
     #  backupTarget: s3://longhorn@us-east-1/
     #  backupTargetCredentialSecret: longhorn-system-secrets
