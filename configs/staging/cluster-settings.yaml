@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: cluster-settings
 data:
-  LB_IP_NGINX_INGRESS: 10.10.4.221
+  LB_IP_NGINX_INGRESS: 10.10.4.101
   LB_IP_NGINX_INGRESS_EXTERNAL: 10.10.4.222
   LB_IP_SYNCTHING_SVC: 10.10.4.224
   LB_IP_SFTPGO_SVC: 10.10.4.225
