@@ -1,9 +1,0 @@
-{
-  "packageRules": [
-    {
-      "matchDatasources": ["docker"],
-      "enabled": true,
-      "commitMessageTopic": "container image {{depName}}"
-    }
-  ]
-}

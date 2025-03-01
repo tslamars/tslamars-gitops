@@ -1,0 +1,137 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "flux": {
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["cluster/.+\\.ya?ml$","apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["cluster/.+\\.ya?ml$","apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"]
+  },
+  "regexManagers": [
+    {
+      "description": "Match Helm values for non-standard yamls",
+      "fileMatch": "infrastructure/.+\\.ya?ml$",
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "repository:\\s?\"?(?<depName>[^\\s\"]*)\"?\\s*?tag:\\s?\"?(?<currentValue>[^\\s\"]*)\"?"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Match Helm Releases for helm charts",
+      "fileMatch": ["apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "chart:\\s?\"?(?<depName>[^\\s\"]*)\"?\\s*?version:\\s?\"?(?<currentValue>[^\\s\"]*)\"?"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "description": ["Process custom dependencies"],
+      "fileMatch": ["apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"],
+      "matchStrings": [
+        // # renovate: datasource=github-releases depName=k3s-io/k3s
+        // k3s_release_version: &version v1.29.0+k3s1
+        // # renovate: datasource=helm depName=cilium repository=https://helm.cilium.io
+        // version: 1.15.1
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)",
+        // # renovate: datasource=github-releases depName=rancher/system-upgrade-controller
+        // https://github.com/rancher/system-upgrade-controller/releases/download/v0.13.2/crd.yaml
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+    }
+  ],
+  "packageRules": [
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "netdata"
+      ],
+      "registryUrls": ["https://netdata.github.io/helmchart/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "ingress-nginx"
+      ],
+      "registryUrls": ["https://kubernetes.github.io/ingress-nginx/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "app-template"
+      ],
+      "registryUrls": ["https://bjw-s.github.io/helm-charts/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "wireguard",
+        "photoprism",
+        "filebrowser"
+      ],
+      "registryUrls": ["https://k8s-at-home.com/charts/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "intel-device-plugins-operator",
+        "intel-device-plugins-gpu"
+      ],
+      "registryUrls": ["https://intel.github.io/helm-charts/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "mariadb",
+        "redis"
+      ],
+      "registryUrls": ["https://charts.bitnami.com/bitnami/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "nextcloud"
+      ],
+      "registryUrls": ["https://nextcloud.github.io/helm/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "immich"
+      ],
+      "registryUrls": ["https://immich-app.github.io/immich-charts"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "authentik"
+      ],
+      "registryUrls": ["https://charts.goauthentik.io"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "cloudnative-pg"
+      ],
+      "registryUrls": ["https://cloudnative-pg.github.io/charts"]
+    }
+  ]
+}
