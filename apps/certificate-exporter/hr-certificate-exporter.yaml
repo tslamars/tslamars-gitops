@@ -23,7 +23,7 @@ spec:
           cpu: null
     hostPathsExporter:
       daemonSets:
-        cp:
+        cp:  # Control plane nodes
           nodeSelector:
             node-role.kubernetes.io/control-plane: "true"
           tolerations:
@@ -32,37 +32,22 @@ spec:
             - effect: NoExecute
               operator: Exists
           watchFiles:
-            - /var/lib/rancher/k3s/agent/client-ca.crt
-            - /var/lib/rancher/k3s/agent/client-k3s-controller.crt
-            - /var/lib/rancher/k3s/agent/client-kubelet.crt
-            - /var/lib/rancher/k3s/agent/client-kube-proxy.crt
-            - /var/lib/rancher/k3s/agent/server-ca.crt
-            - /var/lib/rancher/k3s/agent/serving-kubelet.crt
-            - /var/lib/rancher/k3s/server/tls/client-admin.crt
-            - /var/lib/rancher/k3s/server/tls/client-auth-proxy.crt
-            - /var/lib/rancher/k3s/server/tls/client-ca.crt
-            - /var/lib/rancher/k3s/server/tls/client-controller.crt
-            - /var/lib/rancher/k3s/server/tls/client-k3s-cloud-controller.crt
-            - /var/lib/rancher/k3s/server/tls/client-k3s-controller.crt
-            - /var/lib/rancher/k3s/server/tls/client-kube-apiserver.crt
-            - /var/lib/rancher/k3s/server/tls/client-kube-proxy.crt
-            - /var/lib/rancher/k3s/server/tls/client-scheduler.crt
-            - /var/lib/rancher/k3s/server/tls/etcd/client.crt
-            - /var/lib/rancher/k3s/server/tls/etcd/peer-ca.crt
-            - /var/lib/rancher/k3s/server/tls/etcd/peer-server-client.crt
-            - /var/lib/rancher/k3s/server/tls/etcd/server-ca.crt
-            - /var/lib/rancher/k3s/server/tls/etcd/server-client.crt
-            - /var/lib/rancher/k3s/server/tls/request-header-ca.crt
-            - /var/lib/rancher/k3s/server/tls/server-ca.crt
-            - /var/lib/rancher/k3s/server/tls/serving-kube-apiserver.crt
-        workers:
+            # Talos control plane certificates
+            - /system/secrets/kubernetes/kube-apiserver.crt
+            - /system/secrets/kubernetes/kube-controller-manager.crt
+            - /system/secrets/kubernetes/kube-scheduler.crt
+            - /system/secrets/kubernetes/etcd-client.crt
+            - /system/secrets/kubernetes/etcd-peer.crt
+            - /system/secrets/kubernetes/etcd-server.crt
+            - /system/secrets/kubernetes/ca.crt
+            - /system/secrets/kubernetes/front-proxy-ca.crt
+            - /system/secrets/kubernetes/front-proxy-client.crt
+        workers:  # Worker nodes
           watchFiles:
-            - /var/lib/rancher/k3s/agent/client-ca.crt
-            - /var/lib/rancher/k3s/agent/client-k3s-controller.crt
-            - /var/lib/rancher/k3s/agent/client-kubelet.crt
-            - /var/lib/rancher/k3s/agent/client-kube-proxy.crt
-            - /var/lib/rancher/k3s/agent/server-ca.crt
-            - /var/lib/rancher/k3s/agent/serving-kubelet.crt
+            # Talos worker node certificates
+            - /system/secrets/kubernetes/kubelet.crt
+            - /system/secrets/kubernetes/kubelet-client.crt
+            - /system/secrets/kubernetes/ca.crt
       resources:
         limits:
           cpu: null
