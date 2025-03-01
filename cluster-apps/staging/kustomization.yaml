@@ -23,7 +23,7 @@ resources:
 # - ../jd2.yaml
 - ../jellyfin.yaml
 - ../jellyseerr.yaml
-# - ../kube-prometheus-stack.yaml
+- ../kube-prometheus-stack.yaml
 # - ../kube-vip.yaml
 # - ../kured.yaml
 # - ../linkwarden.yaml
