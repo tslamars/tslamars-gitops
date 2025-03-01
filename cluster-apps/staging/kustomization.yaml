@@ -23,7 +23,7 @@ resources:
 # - ../jd2.yaml
 - ../jellyfin.yaml
 - ../jellyseerr.yaml
-- ../kube-prometheus-stack.yaml
+# - ../kube-prometheus-stack.yaml
 # - ../kube-vip.yaml
 # - ../kured.yaml
 # - ../linkwarden.yaml
@@ -31,7 +31,7 @@ resources:
 - ../longhorn.yaml
 - ../memos.yaml
 # - ../metallb.yaml
-- ../metrics-server.yaml
+# - ../metrics-server.yaml
 # - ../minio.yaml
 # - ../paperless-ngx.yaml
 # - ../pod-gateway-vpn.yaml
