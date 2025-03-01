@@ -10,7 +10,7 @@ metadata:
 type: genericOIDCConfig
 enabled: true
 groupSearchEnabled: false
-clientId: R4Fy_RAZUfHmPsCAWaD89Snt7wABRsD2IUTP3Xm0AxKbRWzBLIMqQNIpTvuLfKkC6_bvNagL
+clientId: 7MXZUHj1SQu5DmR7B/98e4haM+4bcCjEn66B8PmqxTczeibac7KPVLPHZT36qM1Z
 clientSecret: cattle-global-data:genericoidcconfig-clientsecret
 scope: openid profile email
 issuer: https://auth.${SECRET_DOMAIN}

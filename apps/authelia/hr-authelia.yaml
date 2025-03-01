@@ -216,7 +216,7 @@ spec:
       notifier:
         disable_startup_check: true
         smtp:
-          enabled: true
+          enabled: false
           enabledSecret: true
           address: 'submission://smtp.fastmail.com:587'
           username: mail@${SECRET_DOMAIN}
