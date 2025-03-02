@@ -15,8 +15,8 @@ spec:
         namespace: flux-system
   dependsOn:
     #- name: ingress-nginx-external
-    - name: ingress-nginx
-      namespace: networking
+    #- name: ingress-nginx
+    #  namespace: networking
     - name: longhorn
       namespace: longhorn-system
     - name: memos-postgresql
