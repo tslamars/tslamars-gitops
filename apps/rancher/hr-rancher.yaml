@@ -14,7 +14,7 @@ spec:
         name: rancher-latest
         namespace: flux-system
   dependsOn:
-    - name: ingress-nginx-controller
+    - name: ingress-nginx
       namespace: networking
   values:
     replicas: 3
