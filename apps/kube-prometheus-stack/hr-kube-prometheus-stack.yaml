@@ -58,8 +58,7 @@ spec:
         tls:
         - secretName: alertmanager-tls
           hosts:
-          - "*.${SECRET_DOMAIN}"
-          #- "alert-manager.${SECRET_DOMAIN}"
+          - "alert-manager.${SECRET_DOMAIN}"
       config:
         global:
           slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
