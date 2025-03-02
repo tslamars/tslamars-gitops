@@ -47,3 +47,6 @@ resources:
 # - ../system-upgrade-controller.yaml
 # - ../tandoor-recipes.yaml
 # - ../weave-gitops.yaml
+
+patchesStrategicMerge:
+- ingress-nginx.yaml
