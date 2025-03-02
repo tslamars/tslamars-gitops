@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: rancher
-      version: 2.10.2
+      version: 2.10.3
       sourceRef:
         kind: HelmRepository
         name: rancher-latest
@@ -16,16 +16,13 @@ spec:
   #dependsOn:
   #  - name: ingress-nginx-external
   #    namespace: networking
-  dependsOn:
-    - name: ingress-nginx
-      namespace: networking
   values:
-    replicas: 3
+    replicas: 1
     hostname: rancher.${SECRET_DOMAIN}
     tls: ingress
     ingress:
-      #ingressClassName: nginx-external
       ingressClassName: nginx
+      #ingressClassName: nginx-external
       extraAnnotations:
         #external-dns.alpha.kubernetes.io/target: "${SECRET_GATEWAY}"
         kubernetes.io/tls-acme: "true"
@@ -35,6 +32,3 @@ spec:
         source: secret
         secretName: rancher-tls
     bootstrapPassword: "${SECRET_RANCHER_ADMIN_PASSWORD}"
-    extraEnv:
-      - name: CATTLE_PASSWORD_MIN_LENGTH
-        value: "12"  # Ensures the bootstrap password is at least 12 characters, prompting stronger passwords on reset
