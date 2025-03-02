@@ -13,10 +13,6 @@ spec:
         kind: HelmRepository
         name: rancher-latest
         namespace: flux-system
-  install:
-    crds: Create  # Ensures CRDs are installed
-  upgrade:
-    crds: CreateReplace  # Updates CRDs on upgrade
   #dependsOn:
   #  - name: ingress-nginx-external
   #    namespace: networking
