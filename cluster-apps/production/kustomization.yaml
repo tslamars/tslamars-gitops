@@ -30,7 +30,7 @@ resources:
 # - ../loki.yaml
 - ../longhorn.yaml
 # - ../memos.yaml
-- ../metallb.yaml
+# - ../metallb.yaml
 - ../metrics-server.yaml
 # - ../minio.yaml
 # - ../paperless-ngx.yaml
