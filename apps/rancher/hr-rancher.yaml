@@ -32,3 +32,5 @@ spec:
         source: secret
         secretName: rancher-tls
     bootstrapPassword: "${SECRET_RANCHER_ADMIN_PASSWORD}"
+    systemUpgradeController:
+      enabled: false
