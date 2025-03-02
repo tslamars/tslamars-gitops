@@ -29,7 +29,7 @@ resources:
 # - ../linkwarden.yaml
 # - ../loki.yaml
 - ../longhorn.yaml
-# - ../memos.yaml
+- ../memos.yaml
 # - ../metallb.yaml
 - ../metrics-server.yaml
 # - ../minio.yaml
