@@ -199,8 +199,7 @@ spec:
         tls:
         - secretName: grafana-tls
           hosts:
-          - "*.${SECRET_DOMAIN}"
-          #- "grafana.${SECRET_DOMAIN}"
+          - "grafana.${SECRET_DOMAIN}"
     prometheus:
       image:
         registry: quay.io
@@ -221,8 +220,7 @@ spec:
         tls:
         - secretName: prometheus-tls
           hosts:
-          - "*.${SECRET_DOMAIN}"
-          #- "prometheus.${SECRET_DOMAIN}"
+          - "prometheus.${SECRET_DOMAIN}"
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
